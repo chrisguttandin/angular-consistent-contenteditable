@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="consistent-contenteditable-demo.css" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+        <title>Consitent Contenteditable Demo</title>
+    </head>
+    <body data-ng-app="consistent-contenteditable-demo" data-ng-controller="ConContentDemoCtrl">
+        <h1>Consitent Contenteditable Demo</h1>
+        <h2 class="contenteditable">here is the contenteditable:</h2>
+        <div contenteditable data-cg-con-content data-html="html" data-text="text">try me please</div>
+        <h2 class="text-output">this is its text binding:</h2>
+        <pre class="text-output" data-ng-bind="text | showLineBreaks"></pre>
+        <h2 class="html-output">and this is its html binding:</h2>
+        <pre class="html-output" data-ng-bind="html | breakAtDiv"></pre>
+        <p>This is a little demo for the consistent contenteditable directive to use with AngularJS.</p>
+        <script src="../bower_components/angular/angular.js"></script>
+        <script src="../src/consistent-contenteditable.js"></script>
+        <script src="consistent-contenteditable-demo.js"></script>
+    </body>
+</html>

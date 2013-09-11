@@ -1,0 +1,25 @@
+{
+  "author": "Christoph Guttandin",
+  "description": "AngularJS directive to overcome browser inconsisteny when using line breaks in contenteditable.",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-karma": "~0.6.1",
+    "karma": "~0.10.1",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-requirejs": "~0.1.0",
+    "karma-script-launcher": "~0.1.0"
+  },
+  "license": "BSD",
+  "main": "src/consistent-contenteditable.js",
+  "name": "angular-consistent-contenteditable",
+  "readme": "README.md",
+  "repository": "",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "0.0.0"
+}

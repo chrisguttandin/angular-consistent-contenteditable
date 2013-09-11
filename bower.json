@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "angular": "~1.0.7"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.0.7"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "libpeerconnection.log",
+    "node_modules",
+    "test"
+  ],
+  "main": "src/consistent-contenteditable.js",
+  "name": "angular-consistent-contenteditable",
+  "version": "0.0.0"
+}

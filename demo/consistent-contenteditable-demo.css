@@ -1,0 +1,71 @@
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Sans-Serif;
+}
+
+html,
+body {
+    background-color: #9C9689;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+h1 {
+    color: #000;
+    margin: 15px 0 10px;
+    padding: 0 2px;
+    text-shadow: 0 1px #F5D3E5;
+}
+
+h2 {
+    border-top: 1px solid #000;
+    color: #F5D3E5;
+    margin: 5px 0 0;
+    padding: 0 2px;
+    text-shadow: 0 1px #000;
+}
+
+div[contenteditable],
+pre {
+    border: 1px solid #000;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5) inset;
+    height: 150px;
+    margin: 0;
+    padding: 2px;
+    width: 100%;
+}
+
+h2.contenteditable {
+    background-color: rgb(53, 119, 250);
+}
+
+div[contenteditable] {
+    background-color: rgba(53, 119, 250, 0.5);
+    outline: none;
+}
+
+h2.text-output {
+    background-color: rgb(20, 227, 30);
+}
+
+pre.text-output {
+    background-color: rgba(20, 227, 30, 0.5);
+}
+
+h2.html-output {
+    background-color: rgb(252, 35, 101);
+}
+
+pre.html-output {
+    background-color: rgba(252, 35, 101, 0.5);
+}
+
+p {
+    margin: 10px 0;
+    padding: 2px;
+}
+
