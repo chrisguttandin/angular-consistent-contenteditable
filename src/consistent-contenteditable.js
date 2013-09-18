@@ -10,6 +10,8 @@ angular
     .directive('cgConContent', function ($document) {
 
         function applyBindings($scope, html, text) {
+            $scope.expectChange = false;
+
             if (!$scope.$root.$$phase) {
                 $scope.$apply(function() {
                     $scope.html = html;
@@ -149,19 +151,21 @@ angular
             var child,
                 children,
                 div,
+                htmlAfterwards,
+                htmlBefore,
                 i,
                 lastGrandChild,
                 length,
                 lines,
                 parent;
 
+            //logChildren(parent);
+
             parent = this;
             children = parent.childNodes;
+            htmlBefore = parent.innerHTML;
             length = children.length;
             lines = [];
-
-            console.log('start normalizing the following html structure: "' + parent.innerHTML + '"');
-            //logChildren(parent);
 
             for (i = 0; i < length; i += 1) {
                 child = children[i];
@@ -228,18 +232,41 @@ angular
                 }
             }
 
-            console.log('normalized the following html structure: "' + parent.innerHTML + '"');
             //logChildren(parent);
 
-            applyBindings($scope, parent.innerHTML, lines.join('\n'));
+            htmlAfterwards = parent.innerHTML;
+
+            if (htmlBefore !== htmlAfterwards || htmlBefore !== $scope.html) {
+                console.log('start normalizing the following html structure: "' + htmlBefore + '"');
+                console.log('normalized the following html structure: "' + htmlAfterwards + '"');
+                applyBindings($scope, htmlAfterwards, lines.join('\n'));
+            }
         }
 
         return {
             controller: 'cgConContentCtrl',
             link: function ($scope, element) {
 
+                $scope.expectChange = false;
+
+                function insertHtml (html) {
+                    if (typeof html !== 'undefined') {
+                        element[0].innerHTML = html;
+                    }
+                    normalize.call(element[0], $scope);
+                }
+
+                $scope.$watch('html', function(newValue, oldValue) {
+                    if ($scope.expectChange &&
+                            newValue !== oldValue) {
+                        insertHtml(newValue);
+                    }
+                    $scope.expectChange = true;
+                });
+
                 element.bind('input', normalize.bind(element[0], $scope));
-                normalize.call(element[0], $scope);
+
+                insertHtml($scope.html);
 
                 // binding keyup whould be to late
                 element.bind('keydown', function (event) {
@@ -247,7 +274,6 @@ angular
                         $scope.expectLineBreak = true;
                     }
                 });
-
             },
             restrict: 'A',
             scope: {
