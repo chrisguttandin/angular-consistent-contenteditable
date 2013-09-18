@@ -10,6 +10,10 @@ angular
 
         $scope.text = '';
 
+        $scope.changeHtml = function () {
+            $scope.html = '<div>just one line</div>';
+        }
+
     }])
     .filter('breakAtDiv', function() {
         return function(input) {
